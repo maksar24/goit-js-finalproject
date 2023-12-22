@@ -35,6 +35,7 @@ function handleGetLink(event) {
         original === source
     );
     showImageModal(currentImage);
+
 };
 
 function showImageModal({ original, description }) {
@@ -53,7 +54,13 @@ function createImageModal(link, desk) {
             "width="1000" 
             height="800"
         >
-    `);
+    `,
+    {
+        onClose() {
+            document.removeEventListener('keydown', closeModalByEsc);
+        }
+    }
+    );
 };
 
 function closeModalByEsc(event) {
